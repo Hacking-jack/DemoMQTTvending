@@ -49,12 +49,14 @@ class MQTTReader:
         print("Conectado con el código de resultado: " + str(rc))
         # Suscríbete al tema al conectarte
         client.subscribe(self.topic)
+        print(f"Suscripción exitosa al tema {self.topic}")
 
     def on_message(self, client, userdata, msg):
-
+        print(f"Mensaje recibido: {msg.payload.decode()}")
         mensaje = msg.payload.decode()
         if mensaje in ["ON", "OFF"]:
             activa(mensaje)
+            print(f"Ejecutada la función activa() para mensaje: {mensaje}")
         else:
             print(f"Mensaje no reconocido: {mensaje}")
 
