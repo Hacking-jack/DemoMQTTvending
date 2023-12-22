@@ -51,7 +51,12 @@ class MQTTReader:
         client.subscribe(self.topic)
 
     def on_message(self, client, userdata, msg):
-        activa(msg.payload.decode())
+
+        mensaje = msg.payload.decode()
+        if mensaje in ["ON", "OFF"]:
+            activa(mensaje)
+        else:
+            print(f"Mensaje no reconocido: {mensaje}")
 
 
 # Uso de la clase MQTTReader
