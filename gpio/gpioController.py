@@ -11,6 +11,6 @@ def activa(msg: str):
 
     if (msg == "ON"):
         GPIO.output(21, GPIO.HIGH)
-        time.sleep(1500)
+        time.sleep(1.5)
         GPIO.output(21, GPIO.LOW)
         time.sleep(1)
