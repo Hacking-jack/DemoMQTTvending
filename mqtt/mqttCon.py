@@ -9,7 +9,7 @@ def activa(msg: str):
 
     # Set up GPIO pin 17 as an output
     GPIO.setup(21, GPIO.OUT)
-
+    print(msg)
     if (msg == "ON"):
         GPIO.output(21, GPIO.HIGH)
         time.sleep(1500)
@@ -51,7 +51,7 @@ class MQTTReader:
         client.subscribe(self.topic)
 
     def on_message(self, client, userdata, msg):
-        activa(msg)
+        activa(msg.payload.decode())
 
 
 # Uso de la clase MQTTReader
